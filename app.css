@@ -1,0 +1,119 @@
+/* https://github.com/andreacardybailey/responsive_example/blob/master/styles/responsive-base.css  */
+
+/* ====== GENERAL STYLES ======= */
+html {
+  background-color: #333533;
+}
+
+div {
+  margin: 0 15px;
+  background-color: #9ea3b0;
+}
+
+h1 {
+  text-align: center;
+  font-family: "Staatliches", cursive;
+  color: antiquewhite;
+}
+
+h2 {
+  color: #333533;
+}
+
+h3 {
+  font-weight: lighter;
+  color: #333533;
+}
+
+span {
+  font-weight: lighter;
+  color: #333533;
+}
+
+/* ====== Form Style ======= */
+
+form {
+  padding: 0 0 10px 0;
+}
+
+form h2 {
+  padding: 8px;
+  text-align: center;
+  font-family: "Staatliches", cursive;
+}
+
+form p {
+  padding: 8px 0 0 12px;
+  font-family: "Montserrat", sans-serif;
+}
+
+form div {
+  padding: 0 0 0 12px;
+  font-family: "Staatliches", cursive;
+}
+
+.start-quiz-btn {
+  font-family: "Staatliches", cursive;
+}
+/* ====== Question Template Style ====== */
+
+input[type="radio"] {
+  margin: 0 0 0 10px;
+}
+
+.submit-question-btn {
+  padding: 15px 0 0 10px;
+}
+
+/* Answer Template Styles */
+
+.answer-h3 {
+  padding: 8px 0 0 10px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.next-question-btn {
+  padding: 15px 0 0 10px;
+}
+
+/* ====== End Template Styles ====== */
+
+.end-h3 {
+  padding: 8px 0 0 0;
+  font-family: "Staatliches", cursive;
+}
+
+.end-p {
+  margin: 16px 0;
+  padding: 0;
+}
+
+.try-again-button {
+  font-family: "Staatliches", cursive;
+}
+
+/* ====== Card Styles ======= */
+
+.project-card {
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+.project-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* ====== Desktop Styles ====== */
+
+@media all and (min-width: 800px) {
+  .project-card {
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+  }
+
+  .project-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  }
+}
