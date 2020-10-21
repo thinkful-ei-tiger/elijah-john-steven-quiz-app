@@ -1,56 +1,54 @@
 const store = {
-
-    questions: [
-        {
-            question: 'Random Question',
+    questions: [{
+            question: 'What year did Die Hard release in theaters?',
             answers: [
-                'Dog',
-                'Cat',
-                'Fish',
-                'Horse'
+                '1991',
+                '1988',
+                '1986',
+                '1993'
             ],
-            correctAnswer: 'Dog'
+            correctAnswer: '1988'
         },
         {
-            question: 'Random Question',
+            question: 'What was the name of the main villain?',
             answers: [
-                'Dog',
-                'Cat',
-                'Fish',
-                'Horse'
+                'Franz Krieger',
+                'Alec Trevelyan',
+                'Hans Gruber',
+                'Aleksandr Kodoroff'
             ],
-            correctAnswer: 'Dog'
+            correctAnswer: 'Hans Gruber'
         },
         {
-            question: 'Random Question',
+            question: `What is Holly McClane's maiden name?`,
             answers: [
-                'Dog',
-                'Cat',
-                'Fish',
-                'Horse'
+                'Gianmarco',
+                'Gennaro',
+                'Galasso',
+                'Gamberini'
             ],
-            correctAnswer: 'Dog'
+            correctAnswer: 'Gennaro'
         },
         {
-            question: 'Random Question',
+            question: 'Who WAS NOT considered to play the staring role?',
             answers: [
-                'Dog',
-                'Cat',
-                'Fish',
-                'Horse'
+                'Clint Eastwood',
+                'Frank Sinatra',
+                'Charles Bronson',
+                'Mel Gibson'
             ],
-            correctAnswer: 'Dog'
+            correctAnswer: 'Charles Bronson'
         },
         {
-            question: 'Random Question',
+            question: 'Is Die Hard a Christmas movie?',
             answers: [
-                'Dog',
-                'Cat',
-                'Fish',
-                'Horse'
+                'Absolutely',
+                'Maybe',
+                'Not Sure',
+                'Definitely Not'
             ],
-            correctAnswer: 'Dog'
-        }
+            correctAnswer: 'Absolutely'
+        },
     ],
     quizStarted: false,
     questionNumber: 0,
@@ -58,7 +56,7 @@ const store = {
     score: 0,
     showingQuestion: true,
 
-};
+}
 
 /**
  * 
@@ -78,21 +76,24 @@ const store = {
 
 function renderStartTemplate() {
     return `
-    <form class="flex-column flex-center">
+    <div class = "project-card">
+    <form>
         <h2>Are you ready to get started?</h2>
         <p>You are about to embark on a quest of knowledge involving the topic of "ENTER TOPIC HERE". 
         We hope you have had your Wheaties this morning...</p>
         <p>Press the button below to begin.</p>
         <button class="start-button" type="button">Start Quiz!</button>
-    </form>`;
+    </form>
+    </div>`;
 }
 
 function renderQuestionTemplate() {
     return ` 
-    <form class="flex-column flex-center">
+    <div class = "project-card project-card:hover">
+    <form>
         <p class="question">
-            <span class="num">Question ${store.questionNumber + 1} of ${store.questions.length}</span> 
-            ${store.questions[store.questionNumber].question}
+            <span class="num">Question ${store.questionNumber + 1} of ${store.questions.length}:</span> 
+            <p>${store.questions[store.questionNumber].question}</p>
         </p>
         <div>
             <input type="radio" id="answer1" name="answer" value="${store.questions[store.questionNumber].answers[0]}" class="answer1" required>
@@ -104,29 +105,38 @@ function renderQuestionTemplate() {
             <input type="radio" id="answer4" name="answer" value="${store.questions[store.questionNumber].answers[3]}" class="answer4"  required>
             <label class="btn" for="answer4" class="answer4">${store.questions[store.questionNumber].answers[3]}</label>
         </div>
+        <div class='submit-question-btn'>
         <button class='submit-question-button error-checker' type='submit'>Submit Question!</button> 
+        </div>
         <div>
             <h3>Current Score</h3>
             <span>Correct Answers: ${store.score} / Incorrect Answers: ${store.incorrect} </span> 
         </div>
-    </form>`;
+    </form>
+    </div>`
+    ;
 }
 
 function renderAnswerTemplate() {
     return `
-    <form class="flex-column flex-center">
+    <div class = "project-card project-card:hover">
+    <form>
         <h3>${store.response}</h3>
+        <div class='next-question-btn'>
         <button class='next-question-button' type='submit'>Next Question</button>
+        </div>
         <div>
             <h3>Current Score</h3>
             <span>Correct Answers: ${store.score} / Incorrect Answers: ${store.incorrect} </span> 
         </div>
-    </form>`;
+    </form>
+    </div>`;
 } 
 
 function renderQuizEndTemplate() {
     return `
-    <form class="flex-column flex-center">
+    <div class = "project-card project-card:hover">
+    <form>
     <h3>${store.response}</h3>
     <div>
         <h3>Current Score</h3>
@@ -135,7 +145,8 @@ function renderQuizEndTemplate() {
     <p>Thanks for taking our quiz! This information will be sold to REDACTED SOCIAL MEDIA COMPANY to help better target adds to users like you.</p>
     <p>Feel free to take it again to give us more data to better fit your consumption needs!</p>    
     <button type="submit" class="try-again-button">Try Again!</button>
-    </form>`;
+    </form>
+    </div>`;
 }
 
 /********** RENDER FUNCTION(S) **********/
@@ -178,7 +189,7 @@ function start() {
 
 function findError() {
     $('main').on('click', 'button', function (event) {
-        if ($(event.currentTarget).text() === 'Submit Question!') {
+        if ($(event.this).text() === 'Submit Question!') {
             if (!$('input[name="answer"]:checked').val()) {
                 alert("Pick an answer!");
             }
